@@ -171,12 +171,16 @@ CONTENT_MULTI_ENUMS = {
         "References external sources, such as other influencers", "Other",
     ],
     "Q18a. Types of calls to action": [
-        "Calls for audience to follow / subscribe",
-        "Calls for audience to comment / engage",
-        "Calls for audience to share content",
-        "Calls for audience to take action in their own life",
-        "Calls for political / social action",
-        "Calls to consume a product or service", "Other",
+        "Calls for audience to like the content",
+        "Calls for audience to share the content",
+        "Calls for audience to follow the speaker on social media",
+        "Calls for men to follow more traditional gender norms",
+        "Calls for men to follow more equitable gender norms",
+        "Calls for women to follow more traditional gender norms",
+        "Calls for women to follow more equitable gender norms",
+        "Calls for politicians or social figures to do something",
+        "Calls for audience to vote in a different way",
+        "Other",
     ],
 }
 
@@ -632,12 +636,20 @@ ALIASES: dict[tuple[str, str], str] = {
         "References external sources, such as other influencers",
     ("Q13. How claims are justified", "data"): "References data",
 
-    # Q18a CTA types
+    # Q18a CTA types — minor variants of canonical options
+    ("Q18a. Types of calls to action", "calls for audience to like content"):
+        "Calls for audience to like the content",
+    ("Q18a. Types of calls to action", "calls for audience to share content"):
+        "Calls for audience to share the content",
     ("Q18a. Types of calls to action",
-     "calls for politicians or social figures to do something"):
-        "Calls for political / social action",
-    ("Q18a. Types of calls to action", "calls for audience to share the content"):
-        "Calls for audience to share content",
+     "calls for audience to follow the speaker"):
+        "Calls for audience to follow the speaker on social media",
+    ("Q18a. Types of calls to action",
+     "calls for women to follow more traditional gender norm"):
+        "Calls for women to follow more traditional gender norms",
+    ("Q18a. Types of calls to action",
+     "calls for men to follow more traditional gender norm"):
+        "Calls for men to follow more traditional gender norms",
 
     # Q1a attention strategies
     ("Q1a. Attention-getting strategies", "others"): "Other",

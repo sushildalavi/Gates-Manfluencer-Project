@@ -30,7 +30,7 @@ import textwrap
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from run_all_transcriptions import build_runtime, select_jobs
+from transcribe_videos import build_runtime, select_jobs
 from transcripts_utils import clean_text, repair_transcript_text
 
 ROOT = Path(__file__).resolve().parents[2]

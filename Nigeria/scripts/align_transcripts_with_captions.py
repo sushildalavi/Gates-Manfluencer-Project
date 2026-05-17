@@ -32,7 +32,7 @@ from textwrap import dedent
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from run_all_transcriptions import build_runtime, select_jobs
+from transcribe_videos import build_runtime, select_jobs
 from transcripts_utils import (
     clean_text,
     parse_transcript_style_lines,
@@ -670,7 +670,7 @@ def parse_args() -> argparse.Namespace:
                         help="Skip optional Gemini speaker-boundary refinement.")
     parser.add_argument("--force", action="store_true",
                         help="Re-run even if a backup already exists from a previous run.")
-    parser.add_argument("--log-file", default=str(ROOT / "transcript_improvement.log"))
+    parser.add_argument("--log-file", default=str(ROOT / "temp" / "logs" / "transcript_improvement.log"))
     parser.add_argument("--backup", action="store_true", default=True,
                         help="Back up original transcripts before overwriting.")
     parser.add_argument("--no-backup", dest="backup", action="store_false")
