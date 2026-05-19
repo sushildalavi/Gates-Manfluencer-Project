@@ -16,6 +16,7 @@ __pycache__/
 
 # Temp / cache (regenerable)
 temp/
+graphify-out/
 
 # Logs
 *.log

@@ -16,3 +16,9 @@ torch
 tqdm
 yt-dlp
 cohere
+apify-client
+matplotlib
+nest-asyncio
+python-docx
+seaborn
+twscrape
