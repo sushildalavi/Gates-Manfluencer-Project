@@ -117,7 +117,7 @@ flowchart TD
 
 ### Cross-country
 
-- `scripts/unified_eda_both_countries.py`
+- `scripts/unifiedEdaBothCountries.py`
   - Runs unified exploratory analysis for Nigeria and Kenya content.
   - Outputs Excel workbooks to `scripts/eda_output/`.
 
