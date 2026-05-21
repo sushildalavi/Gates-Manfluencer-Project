@@ -18,6 +18,7 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Iterable, Sequence
+from openpyxl import Workbook
 
 
 IDENTITY_COLUMNS = {
@@ -266,13 +267,13 @@ def normalize_cell(value: str, header: str) -> tuple[str, bool]:
     return value, False
 
 
-def read_csv(path: Path) -> list[list[str]]:
+def read_rows(path: Path) -> list[list[str]]:
     with path.open(newline="", encoding="utf-8-sig") as file:
         return [row for row in csv.reader(file)]
 
 
 def normalize_file(path: Path, output_path: Path) -> dict[str, object]:
-    rows = read_csv(path)
+    rows = read_rows(path)
     if not rows:
         raise ValueError(f"{path} is empty")
 
@@ -310,9 +311,12 @@ def normalize_file(path: Path, output_path: Path) -> dict[str, object]:
         output_rows.append(cleaned_row)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    with output_path.open("w", newline="", encoding="utf-8") as file:
-        writer = csv.writer(file)
-        writer.writerows(output_rows)
+    workbook = Workbook()
+    sheet = workbook.active
+    sheet.title = "Normalized"
+    for row in output_rows:
+        sheet.append(row)
+    workbook.save(output_path)
 
     return {
         "input": str(path),
@@ -353,7 +357,7 @@ def write_report(path: Path, reports: Sequence[dict[str, object]]) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Normalize codebook CSV files for agreement scoring.")
+    parser = argparse.ArgumentParser(description="Normalize codebook files for agreement scoring.")
     parser.add_argument("--human", required=True, type=Path)
     parser.add_argument("--llm", required=True, type=Path)
     parser.add_argument("--human-output", required=True, type=Path)

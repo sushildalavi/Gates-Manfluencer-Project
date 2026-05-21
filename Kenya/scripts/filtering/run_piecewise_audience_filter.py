@@ -10,7 +10,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from kenya_filter import (
+from kenya_audience_filter_pipeline import (
     KENYA_FILES,
     DEFAULT_KEYWORD_FILE,
     INPUTS_DIR,
@@ -58,8 +58,8 @@ def process_single_file(
         filtered = apply_filter_rule(df, high_terms, moderate_terms, mode)
         kept_count = int(filtered["keep"].sum())
 
-        filtered.to_csv(mode_dir / f"filtered_{mode}_all.csv", index=False)
-        filtered[filtered["keep"]].to_csv(mode_dir / f"filtered_{mode}_kept.csv", index=False)
+        filtered.to_excel(mode_dir / f"Filtered {mode.upper()} All Comments.xlsx", index=False)
+        filtered[filtered["keep"]].to_excel(mode_dir / f"Filtered {mode.upper()} Kept Comments.xlsx", index=False)
 
         summary = pd.DataFrame([{
             "source_file": file_path.name,
@@ -67,7 +67,7 @@ def process_single_file(
             "kept_comments": kept_count,
             "retention_pct": round(kept_count / total * 100, 2) if total else 0.0,
         }])
-        summary.to_csv(mode_dir / f"filtered_{mode}_summary.csv", index=False)
+        summary.to_excel(mode_dir / f"Filtered {mode.upper()} Summary.xlsx", index=False)
 
         result[f"{mode}_kept"] = kept_count
         result[f"{mode}_pct"] = round(kept_count / total * 100, 2) if total else 0.0

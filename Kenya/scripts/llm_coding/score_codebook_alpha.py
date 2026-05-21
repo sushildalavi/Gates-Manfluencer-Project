@@ -23,6 +23,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from statistics import mean
 from typing import Iterable, Sequence
+import pandas as pd
 
 
 IDENTITY_COLUMNS = {
@@ -360,13 +361,9 @@ def fmt_score(value: float | None) -> str:
     return "" if value is None else f"{value:.6f}"
 
 
-def write_csv(path: Path, fieldnames: Sequence[str], rows: Sequence[dict[str, object]]) -> None:
+def write_excel(path: Path, fieldnames: Sequence[str], rows: Sequence[dict[str, object]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", newline="", encoding="utf-8") as file:
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
-        writer.writeheader()
-        for row in rows:
-            writer.writerow(row)
+    pd.DataFrame(rows, columns=list(fieldnames)).to_excel(path, index=False)
 
 
 def score_single_column(
@@ -450,12 +447,12 @@ def score_multi_column(
 
 
 def output_paths(output: Path) -> tuple[Path, Path, Path]:
-    suffix = output.suffix or ".csv"
-    if suffix.casefold() != ".csv":
-        raise ValueError("--output must be a .csv path")
+    suffix = output.suffix or ".xlsx"
+    if suffix.casefold() != ".xlsx":
+        raise ValueError("--output must be a .xlsx path")
     question_path = output
-    merged_path = output.with_name(f"{output.stem}_merged_cleaned.csv")
-    summary_path = output.with_name(f"{output.stem}_summary.csv")
+    merged_path = output.with_name(f"{output.stem} Merged Cleaned.xlsx")
+    summary_path = output.with_name(f"{output.stem} Summary.xlsx")
     return question_path, merged_path, summary_path
 
 
@@ -661,8 +658,8 @@ def calculate_scores(
         },
     ]
 
-    write_csv(merged_path, merged_fieldnames, merged_rows)
-    write_csv(
+    write_excel(merged_path, merged_fieldnames, merged_rows)
+    write_excel(
         question_path,
         [
             "Codebook question",
@@ -679,7 +676,7 @@ def calculate_scores(
         ],
         question_rows,
     )
-    write_csv(summary_path, ["Score", "How calculated", "Value", "Interpretation"], summary_rows)
+    write_excel(summary_path, ["Score", "How calculated", "Value", "Interpretation"], summary_rows)
 
     print(f"Wrote question-level scores to {question_path}")
     print(f"Wrote overall summary to {summary_path}")
@@ -700,8 +697,8 @@ def main() -> None:
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("agreement_question_scores.csv"),
-        help="Path for the question-level score CSV. Summary and merged CSVs use the same stem.",
+        default=Path("Agreement Question Scores.xlsx"),
+        help="Path for the question-level score workbook. Summary and merged workbooks use the same stem.",
     )
     parser.add_argument(
         "--id-column",

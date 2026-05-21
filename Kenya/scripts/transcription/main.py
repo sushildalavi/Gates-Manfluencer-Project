@@ -187,11 +187,11 @@ def main() -> None:
     logger.info("STEP 8: Writing outputs")
     logger.info("=" * 60)
 
-    from writers import write_transcript_txt, write_transcript_json, write_segments_csv
+    from writers import write_transcript_txt, write_transcript_json, write_segments_excel
 
     txt_path = write_transcript_txt(turns, metadata, str(output_dir / f"{slug}.txt"))
     json_path = write_transcript_json(turns, metadata, str(output_dir / f"{slug}.json"))
-    csv_path = write_segments_csv(turns, str(output_dir / f"{slug}_segments.csv"))
+    excel_path = write_segments_excel(turns, str(output_dir / f"{slug} Segments.xlsx"))
 
     # ------------------------------------------------------------------
     # Cleanup
@@ -208,7 +208,7 @@ def main() -> None:
     print("\n✓ Pipeline complete!")
     print(f"  Transcript : {txt_path}")
     print(f"  JSON       : {json_path}")
-    print(f"  CSV        : {csv_path}")
+    print(f"  Excel      : {excel_path}")
     print(f"  Duration   : {elapsed:.1f} s")
 
 

@@ -260,12 +260,12 @@ def process_one_file(path: Path, mode: str) -> pd.DataFrame:
 def save_piece_outputs(results: pd.DataFrame, output_dir: Path, mode: str) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    all_path = output_dir / f"filtered_{mode}_all.csv"
-    kept_path = output_dir / f"filtered_{mode}_kept.csv"
-    summary_path = output_dir / f"filtered_{mode}_summary.csv"
+    all_path = output_dir / f"Filtered {mode.upper()} All Comments.xlsx"
+    kept_path = output_dir / f"Filtered {mode.upper()} Kept Comments.xlsx"
+    summary_path = output_dir / f"Filtered {mode.upper()} Summary.xlsx"
 
-    results.to_csv(all_path, index=False)
-    results[results["keep"]].to_csv(kept_path, index=False)
+    results.to_excel(all_path, index=False)
+    results[results["keep"]].to_excel(kept_path, index=False)
 
     summary = pd.DataFrame([{
         "source_file": results["source_file"].iloc[0] if len(results) else "",
@@ -274,7 +274,7 @@ def save_piece_outputs(results: pd.DataFrame, output_dir: Path, mode: str) -> No
         "kept_comments": int(results["keep"].sum()),
         "retention_pct": round((results["keep"].sum() / len(results) * 100), 2) if len(results) else 0.0,
     }])
-    summary.to_csv(summary_path, index=False)
+    summary.to_excel(summary_path, index=False)
 
 
 def main():

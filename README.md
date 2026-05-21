@@ -1,62 +1,175 @@
-# Gates Manfluencer Project
+# Gates Foundation Masculinity Influencer Study
 
-Research workspace for content and audience analysis of masculinity narratives in **Nigeria** and **Kenya**.
+Production repository for the Norman Lear Center (USC) analysis of masculinity influencer content and audience reception in Nigeria and Kenya.
 
-## Current final coding assets
+## Project Purpose
 
-### LLM codebooks (combined, country-by-sheet)
-- `Codebooks/LLM Codebook/LLM Coding - Audience Analysis.xlsx`
-  - Sheet: `Nigeria - LLM Coding`
-  - Sheet: `Kenya - LLM Coding`
-- `Codebooks/LLM Codebook/LLM Coding - Content Analysis.xlsx`
-  - Sheet: `Nigeria - LLM Coding`
-  - Sheet: `Kenya - LLM Coding`
+This repository supports two linked analytical tracks:
 
-### Human codebooks (final structure)
-- `Codebooks/Human Codebooks/Audience Analysis Codebooks/`
-  - 6 final audience coder books (A–F)
-- `Codebooks/Human Codebooks/Content Analysis Codebooks/`
-  - 6 final content coder books (A–F)
+1. Content analysis of masculinity-focused creator outputs.
+2. Audience reception analysis of public comments responding to that content.
 
-## Notebooks
+The project combines exploratory analysis and focused structured coding with human validation and reliability scoring.
 
-### Global notebooks (project-level LLM coding)
-- `Notebooks/LLM Coding Notebook - Audience Analysis.ipynb`
-- `Notebooks/LLM Coding Notebook - Content Analysis.ipynb`
+## Final Deliverables
 
-### Nigeria notebooks (pipeline + analysis operations)
-- `Nigeria/Notebooks/Data Acquisition Pipeline.ipynb`
-- `Nigeria/Notebooks/Audience Comments.ipynb`
-- `Nigeria/Notebooks/Content Analysis.ipynb`
-- `Nigeria/Notebooks/Exploratory Analysis.ipynb`
+Primary report deliverables are in:
 
-## Figures for reporting
+- `Research Assets/Deliverables/Content Analysis Report - Nigeria and Kenya.docx`
+- `Research Assets/Deliverables/Audience Reception Report - Nigeria and Kenya.docx`
 
-All report-ready visuals are organized under:
+High-resolution figure exports are in:
+
+- `Figures/Figures/High Resolution Exports Complete/`
+- `Research Assets/Deliverables/Figures/`
+
+## Repository Layout
+
+- `Codebooks/`
+  - `Human Codebooks/` final human coding workbooks.
+  - `LLM Codebook/` final LLM coding outputs.
+  - `Master Codebooks - Human/` consolidated master and reliability files.
+- `Nigeria/`
+  - Country-specific content and audience data, scripts, notebooks, and outputs.
+- `Kenya/`
+  - Country-specific content and audience data, scripts, notebooks, and outputs.
+- `scripts/`
+  - Cross-country pipeline scripts and shared outputs.
+- `Notebooks/`
+  - Project-level notebooks for reliability, agreement, and normalization workflows.
 - `Figures/`
+  - Report visuals, pipeline figures, high-resolution exports, and deck-ready assets.
+- `Research Assets/`
+  - Scope docs, methodology notes, and final reporting package.
 
-Main figure groups:
-- `Figures/Deliverable Figures - Audience/`
-- `Figures/Deliverable Figures - Content/`
-- `Figures/Audience Pipeline Charts - Kenya/`
-- `Figures/Audience Exploratory Charts - Nigeria/`
+## Environment Setup
 
-File names are plain English for easy handoff and report insertion.
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-## Country data workspaces
+Core dependencies used in active workflows:
 
-- `Nigeria/` contains Nigeria pipeline assets, final workbooks, translation targets, and exploratory outputs.
-- `Kenya/` contains Kenya data assets and final workbooks.
+- `pandas`
+- `openpyxl`
+- `python-docx`
+- `krippendorff`
+- `matplotlib`
+- `seaborn`
 
-## Research deliverables
+## End-to-End Pipeline
 
-Final narrative deliverables are stored in:
-- `Research Assets/Deliverables/`
+```mermaid
+flowchart TD
+    A["Project scope and creator selection"] --> B["Source capture by country and platform"]
+    B --> C["Transcription and text normalization"]
+    C --> D["Exploratory analysis and thematic synthesis"]
+    D --> E["Focused LLM coding against fixed codebooks"]
+    E --> F["Human coding and overlap design"]
+    F --> G["Reliability and agreement scoring"]
+    G --> H["QA checks and schema validation"]
+    H --> I["Final reports and figure exports"]
+```
 
-## Handoff note
+## Content Analysis Pipeline
 
-For a new owner, the fastest route is:
-1. Review this README.
-2. Open `Nigeria/README.md` for Nigeria execution details.
-3. Use global notebooks in `Notebooks/` for LLM coding updates.
-4. Use `Figures/` and `Research Assets/Deliverables/` for report packaging.
+```mermaid
+flowchart LR
+    A["Creator content sources"] --> B["Country ingestion\nNigeria and Kenya"]
+    B --> C["Transcription and segmentation"]
+    C --> D["Snippet-level schema standardization"]
+    D --> E["Exploratory coding\nsentiment, themes, framing"]
+    E --> F["Focused structured coding\nfinal content codebook"]
+    F --> G["Human overlap coding\npairwise + all-coder"]
+    G --> H["Metrics\nexact, kappa, alpha, jaccard, F1"]
+    H --> I["Content report outputs"]
+```
+
+## Audience Analysis Pipeline
+
+```mermaid
+flowchart LR
+    A["Audience comments and replies"] --> B["Keyword and relevance filtering"]
+    B --> C["Language normalization and cleanup"]
+    C --> D["Exploratory audience analysis"]
+    D --> E["Focused structured coding\nfinal audience codebook"]
+    E --> F["Human validation sample\nmaster + IRR workbooks"]
+    F --> G["Agreement and reliability scoring"]
+    G --> H["Audience report outputs"]
+```
+
+## Reliability and QA Workflow
+
+```mermaid
+flowchart TD
+    A["Normalized human and LLM codebooks"] --> B["Closed-field mapping by question"]
+    B --> C["Single-choice metrics\nexact, kappa, alpha"]
+    B --> D["Multi-choice metrics\njaccard and overlap"]
+    C --> E["Track-country summaries"]
+    D --> E
+    E --> F["QA checks\nblank IDs, duplicates, schema logic"]
+    F --> G["Final metric tables for reports"]
+```
+
+## Active Scripts (Renamed and Standardized)
+
+### Cross-country
+
+- `scripts/unified_eda_both_countries.py`
+  - Runs unified exploratory analysis for Nigeria and Kenya content.
+  - Outputs Excel workbooks to `scripts/eda_output/`.
+
+### Kenya filtering
+
+- `Kenya/scripts/filtering/kenya_audience_filter_pipeline.py`
+  - Corpus-level Kenya audience filter.
+  - Writes only Excel outputs.
+- `Kenya/scripts/filtering/run_piecewise_audience_filter.py`
+  - Runs per-piece filtering for all configured Kenya files.
+  - Writes only Excel outputs.
+- `Kenya/scripts/filtering/audience_relevance_filter_piecewise.py`
+  - Single-input piecewise relevance filter.
+  - Writes only Excel outputs.
+
+### Kenya transcription
+
+- `Kenya/scripts/transcription/main.py`
+  - Full transcription pipeline entry point.
+- `Kenya/scripts/transcription/writers.py`
+  - Transcript and segment writers.
+  - Segment outputs are Excel workbooks.
+
+### Kenya reliability and agreement
+
+- `Kenya/scripts/llm_coding/score_codebook_alpha.py`
+  - Human vs LLM agreement scoring to Excel outputs.
+- `Kenya/scripts/llm_coding/calculate_fair_agreement.py`
+  - Strict and conditional agreement scoring to Excel outputs.
+- `Kenya/scripts/llm_coding/normalize_codebook_agreement_files.py`
+  - Normalization utility that writes normalized workbooks in Excel format.
+
+## Output Format Policy
+
+All active tabular outputs in maintained scripts are standardized to Excel (`.xlsx`).
+
+CSV may still appear as accepted input in selected legacy-compatible readers, but maintained pipelines now write report artifacts in Excel format only.
+
+## Operational Notes
+
+- Do not edit archive materials unless explicitly required.
+- Final report figures should be exported from high-resolution sources for DOCX and slide use.
+- Keep codebook labels canonical and preserve conditional logic rules.
+- Treat open-text fields as qualitative context, not closed-field reliability metrics.
+
+## Maintainer Handoff
+
+For fast onboarding:
+
+1. Read `Research Assets/Project Scope/` for sampling logic and constraints.
+2. Review `Codebooks/` final human and LLM workbooks.
+3. Run country scripts from `Kenya/scripts/` and `Nigeria/scripts/` as needed.
+4. Use `Notebooks/` for reconciliation and reliability checks.
+5. Package report figures from `Figures/` high-resolution folders.
+

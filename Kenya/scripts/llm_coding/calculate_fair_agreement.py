@@ -11,6 +11,7 @@ from collections import Counter
 from pathlib import Path
 from statistics import mean
 from typing import Iterable, Sequence
+import pandas as pd
 
 
 SINGLE_QIDS = {"Q1", "Q4", "Q5", "Q6", "Q14", "Q15", "Q16", "Q17", "Q18"}
@@ -145,12 +146,9 @@ def interpretation(score: float | None) -> str:
     return "Weak agreement"
 
 
-def write_csv(path: Path, fieldnames: Sequence[str], rows: Sequence[dict[str, object]]) -> None:
+def write_excel(path: Path, fieldnames: Sequence[str], rows: Sequence[dict[str, object]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", newline="", encoding="utf-8") as file:
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(rows)
+    pd.DataFrame(rows, columns=list(fieldnames)).to_excel(path, index=False)
 
 
 def calculate(human_path: Path, llm_path: Path, output_prefix: Path) -> None:
@@ -192,9 +190,9 @@ def calculate(human_path: Path, llm_path: Path, output_prefix: Path) -> None:
         fair_rows.append(row_for(header, question_id, column_type, "conditional", fair_score))
 
     write_outputs(output_prefix, strict_rows, fair_rows, len(common_ids))
-    print(f"Wrote strict question scores to {output_prefix}_strict_question_scores.csv")
-    print(f"Wrote fair question scores to {output_prefix}_fair_question_scores.csv")
-    print(f"Wrote summary to {output_prefix}_summary.csv")
+    print(f"Wrote strict question scores to {output_prefix} Strict Question Scores.xlsx")
+    print(f"Wrote fair question scores to {output_prefix} Fair Question Scores.xlsx")
+    print(f"Wrote summary to {output_prefix} Summary.xlsx")
 
 
 def row_for(
@@ -268,13 +266,13 @@ def write_outputs(
         "Jaccard",
         "Valid rows",
     ]
-    write_csv(Path(f"{output_prefix}_strict_question_scores.csv"), fields, strict_rows)
-    write_csv(Path(f"{output_prefix}_fair_question_scores.csv"), fields, fair_rows)
+    write_excel(Path(f"{output_prefix} Strict Question Scores.xlsx"), fields, strict_rows)
+    write_excel(Path(f"{output_prefix} Fair Question Scores.xlsx"), fields, fair_rows)
     summary_rows = summarize(strict_rows, "strict", overlapping_ids) + summarize(
         fair_rows, "fair conditional", overlapping_ids
     )
-    write_csv(
-        Path(f"{output_prefix}_summary.csv"),
+    write_excel(
+        Path(f"{output_prefix} Summary.xlsx"),
         ["Scoring method", "Score", "Value", "Interpretation", "Overlapping Content IDs"],
         summary_rows,
     )

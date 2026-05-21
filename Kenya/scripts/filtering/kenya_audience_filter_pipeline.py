@@ -332,14 +332,14 @@ def save_outputs(
 ) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    master_path = output_dir / "kenya_master_corpus.csv"
-    kept_path = output_dir / f"kenya_filtered_{mode}_kept.csv"
-    full_path = output_dir / f"kenya_filtered_{mode}_all.csv"
-    summary_path = output_dir / f"kenya_filtered_{mode}_summary.csv"
+    master_path = output_dir / "Kenya Master Corpus.xlsx"
+    kept_path = output_dir / f"Kenya Filtered {mode.upper()} Kept Comments.xlsx"
+    full_path = output_dir / f"Kenya Filtered {mode.upper()} All Comments.xlsx"
+    summary_path = output_dir / f"Kenya Filtered {mode.upper()} Summary.xlsx"
 
-    master_df.to_csv(master_path, index=False)
-    filtered_df.to_csv(full_path, index=False)
-    filtered_df[filtered_df["keep"]].to_csv(kept_path, index=False)
+    master_df.to_excel(master_path, index=False)
+    filtered_df.to_excel(full_path, index=False)
+    filtered_df[filtered_df["keep"]].to_excel(kept_path, index=False)
 
     summary = (
         filtered_df
@@ -351,7 +351,7 @@ def save_outputs(
         .reset_index()
     )
     summary["retention_pct"] = (summary["kept_comments"] / summary["total_comments"] * 100).round(2)
-    summary.to_csv(summary_path, index=False)
+    summary.to_excel(summary_path, index=False)
 
     print("\nSaved:")
     print(f"  {master_path}")

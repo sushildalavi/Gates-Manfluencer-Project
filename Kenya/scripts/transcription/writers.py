@@ -1,11 +1,11 @@
 """
-Output writers: plain-text transcript, JSON, and CSV.
+Output writers: plain-text transcript, JSON, and Excel segments.
 """
 
-import csv
 import json
 import logging
 from pathlib import Path
+import pandas as pd
 
 from utils import format_number
 
@@ -134,29 +134,28 @@ def write_transcript_json(
 
 
 # ---------------------------------------------------------------------------
-# CSV output
+# Excel output
 # ---------------------------------------------------------------------------
 
-def write_segments_csv(
+def write_segments_excel(
     turns: list[dict],
     output_path: str,
 ) -> str:
     """
-    Write a CSV with columns: speaker, start, end, text.
+    Write an Excel file with columns: speaker, start, end, text.
     """
     out = Path(output_path)
     out.parent.mkdir(parents=True, exist_ok=True)
 
-    with out.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=["speaker", "start", "end", "text"])
-        writer.writeheader()
-        for turn in turns:
-            writer.writerow({
-                "speaker": turn["speaker"],
-                "start": turn["start"],
-                "end": turn["end"],
-                "text": turn["text"],
-            })
+    rows = []
+    for turn in turns:
+        rows.append({
+            "speaker": turn["speaker"],
+            "start": turn["start"],
+            "end": turn["end"],
+            "text": turn["text"],
+        })
+    pd.DataFrame(rows).to_excel(out, index=False)
 
-    logger.info("Segments CSV saved: %s", out)
+    logger.info("Segments Excel saved: %s", out)
     return str(out)

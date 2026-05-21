@@ -13,7 +13,7 @@ SOURCE = Path("/Users/dhruvbhanderi/Documents/USC/New Research Engineer/Final da
 OUT_DIR = Path("/Users/dhruvbhanderi/Documents/USC/New Research Engineer/Codex/outputs/kenya_llm_exploratory")
 OUT_JSON = OUT_DIR / "kenya_audience_llm_analysis.json"
 OUT_MD = OUT_DIR / "Kenya Audience LLM Exploratory Report.md"
-OUT_CSV = OUT_DIR / "kenya_audience_row_coding.csv"
+OUT_XLSX = OUT_DIR / "Kenya Audience Row Coding.xlsx"
 
 
 CREATOR_MAP = {
@@ -587,7 +587,7 @@ def main() -> None:
         "source_sheet",
     ]
     out = out[ordered_cols]
-    out.to_csv(OUT_CSV, index=False)
+    out.to_excel(OUT_XLSX, index=False)
 
     data = {
         "source": str(SOURCE),
@@ -628,7 +628,7 @@ def main() -> None:
     OUT_JSON.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
     write_report(out, data)
     print(f"wrote {OUT_JSON}")
-    print(f"wrote {OUT_CSV}")
+    print(f"wrote {OUT_XLSX}")
     print(f"wrote {OUT_MD}")
     print(out.shape)
 
