@@ -13,7 +13,7 @@ from openpyxl.styles import Alignment, Font
 HERE = Path(__file__).resolve().parent
 FILTERING_ROOT = HERE.parent
 FILTERED_DIR = FILTERING_ROOT / "outputs" / "Kenya" / "filtered_output"
-OUTPUT_PATH = FILTERING_ROOT / "outputs" / "Kenya" / "Kenya_top4_most_relevant_comments.xlsx"
+OUTPUT_PATH = FILTERING_ROOT / "outputs" / "Kenya" / "Kenya Top4 Most Relevant Comments.xlsx"
 
 FILES = {
     "Tiktok; Young man who thinks it's a shame not having a car at 35__filtered.xlsx": "Car At 35",

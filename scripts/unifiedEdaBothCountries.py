@@ -9,7 +9,7 @@ Model: gpt-4o-mini via exploratoryAnalysisLib (with caching)
 Outputs:
   scripts/eda_output/Nigeria Content EDA.xlsx   (310 rows)
   scripts/eda_output/Kenya Content EDA.xlsx     (394 rows)
-  scripts/eda_output/theme_counts_summary.txt   (verified stats for document)
+  scripts/eda_output/theme-counts-summary.txt   (verified stats for document)
 """
 
 from __future__ import annotations
@@ -221,6 +221,6 @@ for country, stats, df in [("NIGERIA", ng_stats, ng_out), ("KENYA", ke_stats, ke
         for c, (h, tot) in r["per_creator"].items():
             summary_lines.append(f"    {c}: {h}/{tot} ({h/tot*100:.0f}%)")
 
-(OUT_DIR / "theme_counts_summary.txt").write_text("\n".join(summary_lines))
-print(f"\nSaved theme_counts_summary.txt")
+(OUT_DIR / "theme-counts-summary.txt").write_text("\n".join(summary_lines))
+print(f"\nSaved theme-counts-summary.txt")
 print("\nAll done.")

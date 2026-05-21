@@ -15,7 +15,7 @@ produces per-piece kept workbooks for downstream coding.
 - `audienceRelevanceFilterPiecewise.py`  Single-file filter (platform-agnostic)
 - `filterKenyaComments.py`      Keyword-match filter (conservative / expanded)
 - `createKenyaTop4RelevantWorkbook.py`  Builds top-4 most-relevant workbook
-- `reports/kenya_top4_scope_audit.md`        Scope audit notes
+- `reports/kenya-top4-scope-audit.md`        Scope audit notes
 
 ## Running the filters
 
@@ -31,7 +31,7 @@ python Kenya/scripts/filtering/runPiecewiseAudienceFilter.py
 Reads every XLSX under `inputs/Kenya/` listed in
 `kenyaAudienceFilterPipeline.KENYA_FILES`, runs both v1 and v2 modes, and
 writes per-piece `v1/` and `v2/` folders under
-`outputs/Kenya/piecewise_filter_output/` as Excel workbooks.
+`outputs/Kenya/piecewise-filter-output/` as Excel workbooks.
 
 ### Corpus-level Kenya filter
 
@@ -71,7 +71,7 @@ python Kenya/scripts/filtering/createKenyaTop4RelevantWorkbook.py
 ```
 
 Reads the four priority pieces from `outputs/Kenya/filtered_output/` and
-writes `outputs/Kenya/Kenya_top4_most_relevant_comments.xlsx`.
+writes `outputs/Kenya/Kenya Top4 Most Relevant Comments.xlsx`.
 
 ## Filter modes, at a glance
 

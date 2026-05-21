@@ -21,10 +21,10 @@ from kenyaAudienceFilterPipeline import (
 )
 
 
-OUTPUT_ROOT = OUTPUTS_DIR / "piecewise_filter_output"
+OUTPUT_ROOT = OUTPUTS_DIR / "piecewise-filter-output"
 
 
-def safe_folder_name(filename: str) -> str:
+def safeFolderName(filename: str) -> str:
     name = Path(filename).stem
     name = name.lower()
     name = re.sub(r"[^a-z0-9]+", "_", name)
@@ -37,7 +37,7 @@ def process_single_file(
     high_terms: set,
     moderate_terms: set,
 ) -> dict:
-    piece_name = safe_folder_name(file_path.name)
+    piece_name = safeFolderName(file_path.name)
     piece_dir = OUTPUT_ROOT / piece_name
 
     result = {

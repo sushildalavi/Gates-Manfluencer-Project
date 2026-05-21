@@ -143,11 +143,11 @@ flowchart TD
 
 ### Kenya reliability and agreement
 
-- `Kenya/scripts/llm_coding/scoreCodebookAlpha.py`
+- `Kenya/scripts/llmCoding/scoreCodebookAlpha.py`
   - Human vs LLM agreement scoring to Excel outputs.
-- `Kenya/scripts/llm_coding/calculateFairAgreement.py`
+- `Kenya/scripts/llmCoding/calculateFairAgreement.py`
   - Strict and conditional agreement scoring to Excel outputs.
-- `Kenya/scripts/llm_coding/normalizeCodebookAgreementFiles.py`
+- `Kenya/scripts/llmCoding/normalizeCodebookAgreementFiles.py`
   - Normalization utility that writes normalized workbooks in Excel format.
 
 ## Output Format Policy
