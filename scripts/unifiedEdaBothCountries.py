@@ -4,7 +4,7 @@ Gates-Manfluencer-Project | Norman Lear Center × Gates Foundation
 
 Reads directly from the Final xlsx datasets (no translated parquets needed).
 Runs: themes, sentiment, emotion, misogyny, framing (content only)
-Model: gpt-4o-mini via exploratory_analysis_lib (with caching)
+Model: gpt-4o-mini via exploratoryAnalysisLib (with caching)
 
 Outputs:
   scripts/eda_output/Nigeria Content EDA.xlsx   (310 rows)
@@ -24,7 +24,7 @@ sys.path.insert(0, str(ROOT / "Nigeria" / "scripts"))
 from dotenv import load_dotenv
 load_dotenv(ROOT / ".env")
 
-import exploratory_analysis_lib as eal
+import exploratoryAnalysisLib as eal
 
 OUT_DIR = ROOT / "scripts" / "eda_output"
 OUT_DIR.mkdir(parents=True, exist_ok=True)

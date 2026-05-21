@@ -12,10 +12,10 @@ Phase 2 — Gemini-assisted relabeling:
   - Strict: Gemini may only reassign labels, never alter transcript text
 
 Usage:
-    python scripts/fix_speaker_labels.py                    # full run
-    python scripts/fix_speaker_labels.py --phase1-only      # deterministic fixes only
-    python scripts/fix_speaker_labels.py --jobs andrew_kibe  # specific job(s)
-    python scripts/fix_speaker_labels.py --no-backup        # skip backup
+    python scripts/fixSpeakerLabels.py                    # full run
+    python scripts/fixSpeakerLabels.py --phase1-only      # deterministic fixes only
+    python scripts/fixSpeakerLabels.py --jobs andrew_kibe  # specific job(s)
+    python scripts/fixSpeakerLabels.py --no-backup        # skip backup
 """
 
 from __future__ import annotations
@@ -30,13 +30,13 @@ import textwrap
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from transcribe_videos import build_runtime, select_jobs
-from transcripts_utils import clean_text, repair_transcript_text
+from transcribeVideos import build_runtime, select_jobs
+from transcriptsUtils import clean_text, repair_transcript_text
 
 ROOT = Path(__file__).resolve().parents[2]
 # TRANSCRIPTS now lives under <country>/Generated Transcripts/ — see usage below
 METADATA_DIR = ROOT / "temp" / "yt_metadata"
-LOG = logging.getLogger("fix_speaker_labels")
+LOG = logging.getLogger("fixSpeakerLabels")
 
 # Known speaker names per job — canonical labels
 KNOWN_SPEAKERS: dict[str, dict[str, str]] = {

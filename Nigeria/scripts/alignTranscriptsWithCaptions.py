@@ -32,8 +32,8 @@ from textwrap import dedent
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from transcribe_videos import build_runtime, select_jobs
-from transcripts_utils import (
+from transcribeVideos import build_runtime, select_jobs
+from transcriptsUtils import (
     clean_text,
     parse_transcript_style_lines,
     render_transcript,
