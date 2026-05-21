@@ -84,7 +84,7 @@ def main() -> None:
     logger.info("STEP 2: Converting to 16 kHz mono WAV")
     logger.info("=" * 60)
 
-    from audio_utils import convert_to_wav_16k_mono, get_audio_duration
+    from audioUtils import convert_to_wav_16k_mono, get_audio_duration
 
     wav_path = str(temp_dir / f"{slug}.wav")
     convert_to_wav_16k_mono(raw_audio, wav_path)

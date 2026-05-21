@@ -123,13 +123,13 @@ flowchart TD
 
 ### Kenya filtering
 
-- `Kenya/scripts/filtering/kenya_audience_filter_pipeline.py`
+- `Kenya/scripts/filtering/kenyaAudienceFilterPipeline.py`
   - Corpus-level Kenya audience filter.
   - Writes only Excel outputs.
-- `Kenya/scripts/filtering/run_piecewise_audience_filter.py`
+- `Kenya/scripts/filtering/runPiecewiseAudienceFilter.py`
   - Runs per-piece filtering for all configured Kenya files.
   - Writes only Excel outputs.
-- `Kenya/scripts/filtering/audience_relevance_filter_piecewise.py`
+- `Kenya/scripts/filtering/audienceRelevanceFilterPiecewise.py`
   - Single-input piecewise relevance filter.
   - Writes only Excel outputs.
 
@@ -143,11 +143,11 @@ flowchart TD
 
 ### Kenya reliability and agreement
 
-- `Kenya/scripts/llm_coding/score_codebook_alpha.py`
+- `Kenya/scripts/llm_coding/scoreCodebookAlpha.py`
   - Human vs LLM agreement scoring to Excel outputs.
-- `Kenya/scripts/llm_coding/calculate_fair_agreement.py`
+- `Kenya/scripts/llm_coding/calculateFairAgreement.py`
   - Strict and conditional agreement scoring to Excel outputs.
-- `Kenya/scripts/llm_coding/normalize_codebook_agreement_files.py`
+- `Kenya/scripts/llm_coding/normalizeCodebookAgreementFiles.py`
   - Normalization utility that writes normalized workbooks in Excel format.
 
 ## Output Format Policy
