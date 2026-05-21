@@ -10,7 +10,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from kenya_audience_filter_pipeline import (
+from kenyaAudienceFilterPipeline import (
     KENYA_FILES,
     DEFAULT_KEYWORD_FILE,
     INPUTS_DIR,
