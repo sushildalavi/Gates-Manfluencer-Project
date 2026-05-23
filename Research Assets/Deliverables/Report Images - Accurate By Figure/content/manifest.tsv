@@ -1,0 +1,20 @@
+draw_order	media_name	sha256	kind	caption	output_file
+1	image_norm_006.png	3b3d349850040f6ecdd4a0c907d3ff0f272ab9fb79138de94bed3b416aa4a53c	captioned	Figure 1. Content corpus overview by country and orientation.	figure_1_content.png
+2	image_norm_005.png	c7596f1b75b059bcf073c9cffce9ce71f09ca27dd7c4020ebb967f03f3232c65	captioned	Figure 2. Content analysis pipeline used for source capture, filtering, LLM analysis, human coding, and validation.	figure_2_content.png
+3	image_norm_001.png	04331c0ee11fa3600f6c8e247002450448579140c2218b9572e85e05ab1d9f5b	captioned	Figure 3. Content preparation and transcription workflow visual.	figure_3_content.png
+4	image_norm_002.png	8c2a1ed1594f22579fad58a17c76a9eb27fea89902cf2c200ec05bf0b36466fc	captioned	Figure 4. Summary of human-human exact agreement and Human-LLM Krippendorff α (category-based) by track and country.	figure_4_content.png
+5	image_norm_016.png	c01028cd21d36a4146f68898a5aed0e9f42da5c0e63a6d0381ba430eb949a658	captioned	Figure 6. Krippendorff alpha by question field, Content track, Nigeria.	figure_6_content.png
+6	image_norm_017.png	9238f586c74c13f6b916663a5625e5e65df427c5431b6256326f2606f9b64684	captioned	Figure 6. Krippendorff alpha by question field, Content track, Nigeria.	figure_6_content__2.png
+7	image_norm_018.png	98d0c8e7bdc49f7e9517877827b71b5ec738d93608b7bee74256fde489acad01	captioned	Figure 7. Krippendorff alpha by question field, Content track, Kenya.	figure_7_content.png
+8	image_norm_019.png	9933874637b79d6151d83e951a3884a8a3045f0c30e50a695fa5964618e5be4d	captioned	Figure 8. Human-LLM classification performance (F1) by track and country.	figure_8_content.png
+9	image_norm_015.png	4eb1e65e624dad796abd666ec2404dcc60a8cd126f8cdafd6413d2041f29a3af	captioned	Figure 5. Summary of human-human exact agreement, Krippendorff alpha, and kappa by track and country.	figure_5_content.png
+10	image_norm_008.png	b06f38d2e09b5c0e0d90b5107021a4efc70a7fcb0c74d7d3f2bb13598b52638f	captioned	Figure C6. Content analysis technical pipeline: end-to-end workflow from raw source capture to final coded dataset (704 snippets, Nigeria and Kenya).	figure_C6_content.png
+11	image_norm_007.png	0573441110e274f9c3ff4962c5b54bd1b1752dc98e5b299acd3761209c0d89db	captioned	Appendix Figure C1. Nigeria content corpus: snippet count and orientation by creator.	figure_C1_content.png
+12	image_norm_010.png	631fc7db5a0d9e97e2aa22722801573432b0a552adeee19608f18ff33ad3d439	captioned	Appendix Figure C1. Nigeria content corpus: snippet count and orientation by creator.	figure_C1_content__2.png
+13	image_norm_009.png	e66b868e8e0e92fbc1a9a75be715602a7d796d5c16eb555409da22696daa0dca	captioned	Appendix Figure C2. Kenya content corpus: snippet count and orientation by creator.	figure_C2_content.png
+14	image_norm_012.png	811ac26560eddf40f2fc89b6c6000559b498fd9eacb31a9b969f120a709e76a7	captioned	Appendix Figure C2. Kenya content corpus: snippet count and orientation by creator.	figure_C2_content__2.png
+15	image_norm_011.png	34227ab067fa5552b59507dc6cbdb066f1cef23b414871d983dec54e7a44b83e	captioned	Appendix Figure C3. Major theme prevalence across the combined 704-snippet corpus.	figure_C3_content.png
+16	image_norm_014.png	3e1ce6cb44e1b1377a8b64dc122d2ee99bfb70e00af9858a3c098ec56bddb0ca	captioned	Appendix Figure RG1. Human-human exact agreement heatmap by track and country.	figure_RG1_content.png
+17	image_norm_013.png	743ef9400be05c9fc347b3286ad2c94ac205f55edf08c8dbbd09bc6eba90fa00	captioned	Appendix Figure RG2. Human-human mean Krippendorff alpha heatmap by track and country.	figure_RG2_content.png
+18	image_norm_004.png	cab69af0f19ea455def3b34d05f346bb15f9652df280cdeee96b00aabedc086e	captioned	Appendix Figure RG3. Human-human exact agreement share by track (pie chart).	figure_RG3_content.png
+19	image_norm_003.png	d5e0504a26cb032227ce7fd3ab15887b9b128c198e18b3bf55bac82bd5d20c86	captioned	Appendix Figure RG4. Human-LLM exact agreement share by track (pie chart).	figure_RG4_content.png

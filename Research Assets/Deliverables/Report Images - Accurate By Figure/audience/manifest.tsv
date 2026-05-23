@@ -1,0 +1,21 @@
+draw_order	media_name	sha256	kind	caption	output_file
+1	image_norm_007.png	6ada55f575ed65946e9edf1e92338e5c8d1a46ac5d5581d2df1d36ff41d5ffa8	captioned	Figure 1. Audience corpus overview by country and orientation.	figure_1_audience.png
+2	image_norm_012.png	9f9fb1f954d8a74e0b0d97c26594a73571f366a5fa67d028d43f8e2abbf3f86d	captioned	Figure 2. Audience reception pipeline used for comment capture, filtering, LLM analysis, human coding, and validation.	figure_2_audience.png
+3	image_norm_004.png	866a4b848630a56235e304d04d87ec5ff50f85b22a192acf473c14ef0a936553	captioned	Figure 3. Audience pipeline diagnostic visual from the repo figure set.	figure_3_audience.png
+4	image_norm_001.png	dc5f30e24baf071461731926a2cbfcbc5fe05cdfd874f5fffa33be50f70ef193	captioned	Figure 4. Summary of human-human exact agreement and Human-LLM Krippendorff α (category-based) by track and country.	figure_4_audience.png
+5	image_norm_016.png	4eb1e65e624dad796abd666ec2404dcc60a8cd126f8cdafd6413d2041f29a3af	captioned	Figure 5. Summary of human-human exact agreement, Krippendorff alpha, and kappa by track and country.	figure_5_audience.png
+6	image_norm_017.png	298f26ba293999fbb1691f9024183e2a50e7fc50e867a60c42ba24a0e9653477	captioned	Figure 6. Krippendorff alpha by question field, Audience track, Nigeria.	figure_6_audience.png
+7	image_norm_018.png	d5d6526bdaa1a2cb7e7212a5ab0f4b2975ebed2346f7b6d62a03bd96c37f8eeb	captioned	Figure 6. Krippendorff alpha by question field, Audience track, Nigeria.	figure_6_audience__2.png
+8	image_norm_019.png	98d0c8e7bdc49f7e9517877827b71b5ec738d93608b7bee74256fde489acad01	captioned	Figure 7. Krippendorff alpha by question field, Audience track, Kenya.	figure_7_audience.png
+9	image_norm_020.png	9933874637b79d6151d83e951a3884a8a3045f0c30e50a695fa5964618e5be4d	captioned	Figure 8. Human-LLM classification performance (F1) by track and country.	figure_8_audience.png
+10	image_norm_002.png	dedba6b296705d0a73c3b417bce8c2cbfeb17acdf2969dcb40b5b576c4be93f4	captioned	Figure C6. Audience reception technical pipeline: end-to-end workflow from raw comment collection to final coded dataset (829 comments, Nigeria and Kenya).	figure_C6_audience.png
+11	image_norm_009.png	d0dc5494d47b1d173c3f667dbc43ca4bd302278be9d6558938802a0181cc7fed	captioned	Appendix Figure A1. Nigeria audience corpus: comment count and orientation by creator.	figure_A1_audience.png
+12	image_norm_014.png	7bc7fd2c1ba440f3f004e8b7c2641eeff64e12e0a5a26c82067587dbc8ffeb06	captioned	Appendix Figure A2. Kenya audience corpus: comment count and orientation by creator.	figure_A2_audience.png
+13	image_norm_005.png	63e95eaae974d6a8298988232f63fecc3001ce97b82b333648f0e42fb7e7ad09	captioned	Appendix Figure A3. Audience response mechanism mix by creator: support, contest, testimony, challenge.	figure_A3_audience.png
+14	image_norm_011.png	34227ab067fa5552b59507dc6cbdb066f1cef23b414871d983dec54e7a44b83e	captioned	Appendix Figure A4. Sentiment distribution by country and creator/source orientation.	figure_A4_audience.png
+15	image_norm_003.png	64d485e332b94f1eb8e569fc90d400b58330f5fe5819c0dca378d008b7cf07bd	captioned	Appendix Figure A12. Project corpus overview: content snippets and audience comments by country.	figure_A12_audience.png
+16	image_norm_008.png	5ed9dd1c9b2a53a42e3cff2fdfe8ab70bfe33ab7dad957a996620059de611d6f	captioned	Appendix Figure A13. Combined audience corpus: comment count by country and orientation.	figure_A13_audience.png
+17	image_norm_013.png	3e1ce6cb44e1b1377a8b64dc122d2ee99bfb70e00af9858a3c098ec56bddb0ca	captioned	Appendix Figure RG1. Human-human exact agreement heatmap by track and country.	figure_RG1_audience.png
+18	image_norm_006.png	743ef9400be05c9fc347b3286ad2c94ac205f55edf08c8dbbd09bc6eba90fa00	captioned	Appendix Figure RG2. Human-human mean Krippendorff alpha heatmap by track and country.	figure_RG2_audience.png
+19	image_norm_010.png	cab69af0f19ea455def3b34d05f346bb15f9652df280cdeee96b00aabedc086e	captioned	Appendix Figure RG3. Human-human exact agreement share by track (pie chart).	figure_RG3_audience.png
+20	image_norm_015.png	d5e0504a26cb032227ce7fd3ab15887b9b128c198e18b3bf55bac82bd5d20c86	captioned	Appendix Figure RG4. Human-LLM exact agreement share by track (pie chart).	figure_RG4_audience.png
