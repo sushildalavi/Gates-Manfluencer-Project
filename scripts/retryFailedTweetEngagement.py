@@ -19,7 +19,16 @@ ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(ROOT / ".env")
 
 COOKIES_STR = os.getenv("TWSCRAPE_COOKIES", "")
-OUT_PATH = ROOT / "Research Assets" / "Engagement Metrics" / "twitter_post_engagement.xlsx"
+def pick_existing(*paths: Path) -> Path:
+    for p in paths:
+        if p.exists():
+            return p
+    return paths[0]
+
+OUT_PATH = pick_existing(
+    ROOT / "Research Assets" / "Engagement Metrics" / "twitter_post_engagement.xlsx",
+    ROOT / "Research Assets" / "Engagement Metrics" / "twitter post engagement.xlsx",
+)
 
 
 def parse_cookies(s):

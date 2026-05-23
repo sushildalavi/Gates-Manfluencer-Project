@@ -27,7 +27,16 @@ ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(ROOT / ".env")
 
 COOKIES_STR = os.getenv("TWSCRAPE_COOKIES", "")
-OUT_PATH = ROOT / "Research Assets" / "Engagement Metrics" / "twitter_post_engagement.xlsx"
+def pick_existing(*paths: Path) -> Path:
+    for p in paths:
+        if p.exists():
+            return p
+    return paths[0]
+
+OUT_PATH = pick_existing(
+    ROOT / "Research Assets" / "Engagement Metrics" / "twitter_post_engagement.xlsx",
+    ROOT / "Research Assets" / "Engagement Metrics" / "twitter post engagement.xlsx",
+)
 OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 FOCUSED_DIR = ROOT / "Nigeria" / "Content Analysis" / "Content - Final"
@@ -47,7 +56,10 @@ def parse_cookies(cookies_str: str) -> list[dict]:
 def load_tweet_ids() -> pd.DataFrame:
     frames = []
     for creator in CREATORS:
-        path = FOCUSED_DIR / f"{creator}_Twitter.xlsx"
+        path = pick_existing(
+            FOCUSED_DIR / f"{creator}_Twitter.xlsx",
+            FOCUSED_DIR / f"{creator} Twitter.xlsx",
+        )
         if not path.exists():
             print(f"  ! missing: {path.name}")
             continue

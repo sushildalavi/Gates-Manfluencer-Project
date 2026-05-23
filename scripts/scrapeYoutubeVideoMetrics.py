@@ -29,7 +29,16 @@ load_dotenv(ROOT / ".env")
 API_KEY = os.getenv("GOOGLE_API_KEY")
 assert API_KEY, "GOOGLE_API_KEY must be set in .env"
 
-OUT_PATH = ROOT / "Research Assets" / "Engagement Metrics" / "youtube_video_metrics.xlsx"
+def pick_existing(*paths: Path) -> Path:
+    for p in paths:
+        if p.exists():
+            return p
+    return paths[0]
+
+OUT_PATH = pick_existing(
+    ROOT / "Research Assets" / "Engagement Metrics" / "youtube_video_metrics.xlsx",
+    ROOT / "Research Assets" / "Engagement Metrics" / "youtube video metrics.xlsx",
+)
 OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 YT_API = "https://www.googleapis.com/youtube/v3/videos"
@@ -50,14 +59,20 @@ def collect_video_ids() -> list[dict]:
             records.append({"video_id": vid, "country": country, "creator": creator})
 
     # Nigeria: Banky Wellington Podcast
-    banky = ROOT / "Nigeria" / "Content Analysis" / "Content - Final" / "Banky Wellington_Podcast.xlsx"
+    banky = pick_existing(
+        ROOT / "Nigeria" / "Content Analysis" / "Content - Final" / "Banky Wellington_Podcast.xlsx",
+        ROOT / "Nigeria" / "Content Analysis" / "Content - Final" / "Banky Wellington Podcast.xlsx",
+    )
     if banky.exists():
         df = pd.read_excel(banky)
         for url in df.get("Source URL", pd.Series(dtype=str)).dropna().unique():
             add(extract_video_id(url), "Nigeria", "Banky Wellington")
 
     # Nigeria: Ebuka Obi-Uchendu Podcast
-    ebuka = ROOT / "Nigeria" / "Content Analysis" / "Content - Final" / "Ebuka Obi-Uchendu_Podcast.xlsx"
+    ebuka = pick_existing(
+        ROOT / "Nigeria" / "Content Analysis" / "Content - Final" / "Ebuka Obi-Uchendu_Podcast.xlsx",
+        ROOT / "Nigeria" / "Content Analysis" / "Content - Final" / "Ebuka Obi-Uchendu Podcast.xlsx",
+    )
     if ebuka.exists():
         df = pd.read_excel(ebuka)
         for url in df.get("Source URL", pd.Series(dtype=str)).dropna().unique():
