@@ -11,7 +11,7 @@ from pathlib import Path
 from time import perf_counter
 
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 NOTEBOOK_CANDIDATES = [
     ROOT / "Notebooks" / "Transcription Pipeline.ipynb",
     ROOT / "Nigeria" / "Notebooks" / "Transcription Pipeline.ipynb",

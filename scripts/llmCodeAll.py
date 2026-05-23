@@ -25,9 +25,21 @@ from openpyxl.styles import Alignment, Font, PatternFill
 from openpyxl.utils import get_column_letter
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
-ROOT           = Path("/Users/sushildalavi/Desktop/NLC/Gates-Manfluencer-Project")
-CONTENT_MASTER = ROOT / "Codebooks/Human Codebooks/Master Human Content Codebook.xlsx"
-AUDIENCE_MASTER= ROOT / "Codebooks/Human Codebooks/Master Human Audience Codebook.xlsx"
+ROOT           = Path(__file__).resolve().parents[1]
+def pick_existing(*paths: Path) -> Path:
+    for p in paths:
+        if p.exists():
+            return p
+    return paths[0]
+
+CONTENT_MASTER = pick_existing(
+    ROOT / "Codebooks/Human Codebooks/Master Human Content Codebook.xlsx",
+    ROOT / "Codebooks/Master Codebooks - Human/Master Content Codebook - Final.xlsx",
+)
+AUDIENCE_MASTER = pick_existing(
+    ROOT / "Codebooks/Human Codebooks/Master Human Audience Codebook.xlsx",
+    ROOT / "Codebooks/Master Codebooks - Human/Master Audience Codebook - Final.xlsx",
+)
 LLM_DIR        = ROOT / "Codebooks/LLM Codebook"
 CACHE_DIR      = ROOT / "temp"
 CACHE_DIR.mkdir(parents=True, exist_ok=True)

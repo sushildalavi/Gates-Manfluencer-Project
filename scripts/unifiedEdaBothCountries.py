@@ -19,7 +19,7 @@ import pandas as pd
 
 # ── project root & paths ─────────────────────────────────────────────────────
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / "Nigeria" / "scripts"))
+sys.path.insert(0, str(ROOT / "scripts"))
 
 from dotenv import load_dotenv
 load_dotenv(ROOT / ".env")

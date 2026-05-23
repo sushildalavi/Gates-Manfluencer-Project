@@ -25,10 +25,19 @@ from tqdm.asyncio import tqdm as atqdm
 from tqdm.auto import tqdm
 
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(ROOT / ".env")
 
-KEYWORDS_XLSX = ROOT / "Proposed Keywords & Codebooks" / "NLC Proposed keywords.xlsx"
+def pick_existing(*paths: Path) -> Path:
+    for p in paths:
+        if p.exists():
+            return p
+    return paths[0]
+
+KEYWORDS_XLSX = pick_existing(
+    ROOT / "Proposed Keywords & Codebooks" / "NLC Proposed keywords.xlsx",
+    ROOT / "NLC Proposed keywords.xlsx",
+)
 OUT_DIR = ROOT / "Nigeria/Scraped Tweets"
 CACHE_DIR = ROOT / "temp" / "scraped_tweets_nigeria"
 OUT_DIR.mkdir(parents=True, exist_ok=True)

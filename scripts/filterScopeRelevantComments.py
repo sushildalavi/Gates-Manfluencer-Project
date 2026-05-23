@@ -27,7 +27,7 @@ from openai import AsyncOpenAI
 from tqdm.asyncio import tqdm as atqdm
 
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(ROOT / ".env")
 assert os.getenv("OPENAI_API_KEY"), "OPENAI_API_KEY missing"
 
