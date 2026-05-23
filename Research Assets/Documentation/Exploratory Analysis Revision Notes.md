@@ -44,8 +44,8 @@ Because of this coverage variation, engagement analysis should be run on availab
 
 ## Deliverables updated in this pass
 
-- `Research Assets/Deliverables/LLM Exploratory Audience Findings Revised.docx`
-- `Research Assets/Deliverables/LLM Exploratory Content Findings Revised.docx`
+- `Research Assets/Deliverables/LLM Exploratory Audience Findings.docx`
+- `Research Assets/Deliverables/LLM Exploratory Content Findings.docx`
 
 The revised documents include:
 
@@ -57,11 +57,9 @@ The revised documents include:
 
 ## Reproducibility
 
-Document generation scripts:
+Exploratory outputs are reproducible from the project notebooks and active pipeline scripts.  
+Legacy document-generation scripts were removed during repository cleanup.
 
-- `Nigeria/scripts/build-manager-ready-exploratory-doc.py`
-- `Nigeria/scripts/build-manager-exploratory-docs.py`
-
-This script rebuilds the revised exploratory `.docx` and associated generated figures under:
+Generated exploratory figures and report assets are stored under:
 
 - `Research Assets/Deliverables/Figures/`
